@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# AI-Powered Nutrition & Ayurveda App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based app that helps users make everyday food decisions using a mix of Ayurvedic principles, modern nutrition context, and AI-generated guidance.
 
-Currently, two official plugins are available:
+The goal is not strict dieting or calorie tracking. Instead, the app gives balanced, non-judgmental suggestions based on what the user has, how they feel, and the time of day.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Project Goal
 
-## React Compiler
+This project explores how AI can support personalized food decision-making while still using a structured rule-based system for Ayurvedic logic.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The app focuses on three main user areas:
 
-## Expanding the ESLint configuration
+- **Home:** daily awareness, active dosha, small learning tips, and check-ins
+- **Pantry Helper:** meal suggestions based on ingredients, meal type, stress, digestion, and time
+- **Profile:** dosha explanation, food philosophy, seasonal guidance, and personal notes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## MVP User Flow
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+1. User opens the app
+2. User sees the Home page with time, active dosha, and a daily tip
+3. User opens Pantry Helper
+4. User selects a meal type
+5. User enters ingredients in natural language, such as “I have rice and spinach”
+6. User adds quick context, such as stress, digestion, and time of day
+7. The app combines the pantry input, rule engine, and dosha profile
+8. The app generates 2–3 meal options or a grocery list if ingredients are not enough
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Technical Approach
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Build Tool:** Vite
+- **Logic Layer:** Rule-based Ayurvedic heuristics for time, digestion, stress, and meal context
+- **AI Layer:** LLM integration for natural language input interpretation and meal explanations
+- **Architecture:** Hybrid system combining deterministic rules with AI-generated guidance
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Planned Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Static UI for Home, Pantry Helper, and Profile
+- Rule-based recommendation engine
+- Natural language pantry input
+- AI-assisted meal recommendations
+- Structured JSON output for frontend display
+- Responsible health disclaimers
+- User testing and final evaluation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Senior Project Context
+
+This project is being developed as a Cal Poly Computer Science senior project. The focus is on building a functional prototype while researching the tradeoffs between rule-based systems and AI-assisted recommendation systems.
+
+## Current Status
+
+Initial React + TypeScript + Vite project setup is complete. Next steps include building the core UI screens and implementing the first version of the rule-based Pantry Helper logic.
