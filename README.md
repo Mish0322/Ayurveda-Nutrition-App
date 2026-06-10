@@ -1,52 +1,56 @@
-# AI-Powered Nutrition & Ayurveda App
+# Ahara
 
-A web-based app that helps users make everyday food decisions using a mix of Ayurvedic principles, modern nutrition context, and AI-generated guidance.
+Nourishment that feels personal.
 
-The goal is not strict dieting or calorie tracking. Instead, the app gives balanced, non-judgmental suggestions based on what the user has, how they feel, and the time of day.
+Ahara is a React and TypeScript web app with a small Express backend. It helps users explore meal ideas using pantry ingredients, simple Ayurveda based context, and AI assisted recommendations when an OpenAI API key is available.
 
-## Project Goal
+## What it does
 
-This project explores how AI can support personalized food decision-making while still using a structured rule-based system for Ayurvedic logic.
+- shows a home page with time based rhythm and Ayurveda learning
+- includes a Pantry Helper that suggests meals from ingredients and context
+- includes a Profile page with a dosha questionnaire, learning sections, and saved meals
+- works with OpenAI when `OPENAI_API_KEY` is available
+- still works without OpenAI using fallback recommendation logic
 
-The app focuses on three main user areas:
+## Quick start
 
-- **Home:** daily awareness, active dosha, small learning tips, and check-ins
-- **Pantry Helper:** meal suggestions based on ingredients, meal type, stress, digestion, and time
-- **Profile:** dosha explanation, food philosophy, seasonal guidance, and personal notes
+1. Install dependencies
 
-## MVP User Flow
+```bash
+npm install
+Create a local .env file
+cp .env.example .env
+Optional: add an OpenAI API key
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-4o-mini
+PORT=8787
+If no API key is added, the Pantry Helper still works using the built in fallback logic.
 
-1. User opens the app
-2. User sees the Home page with time, active dosha, and a daily tip
-3. User opens Pantry Helper
-4. User selects a meal type
-5. User enters ingredients in natural language, such as “I have rice and spinach”
-6. User adds quick context, such as stress, digestion, and time of day
-7. The app combines the pantry input, rule engine, and dosha profile
-8. The app generates 2–3 meal options or a grocery list if ingredients are not enough
+Run the app
+Run frontend and backend together:
 
-## Technical Approach
+npm run dev:full
+Then open:
 
-- **Frontend:** React, TypeScript, Tailwind CSS
-- **Build Tool:** Vite
-- **Logic Layer:** Rule-based Ayurvedic heuristics for time, digestion, stress, and meal context
-- **AI Layer:** LLM integration for natural language input interpretation and meal explanations
-- **Architecture:** Hybrid system combining deterministic rules with AI-generated guidance
+Frontend: http://localhost:5173
+Backend health check: http://localhost:8787/api/health
+If you want to run them separately
+Frontend:
 
-## Planned Features
+npm run dev:client
+Backend:
 
-- Static UI for Home, Pantry Helper, and Profile
-- Rule-based recommendation engine
-- Natural language pantry input
-- AI-assisted meal recommendations
-- Structured JSON output for frontend display
-- Responsible health disclaimers
-- User testing and final evaluation
-
-## Senior Project Context
-
-This project is being developed as a Cal Poly Computer Science senior project. The focus is on building a functional prototype while researching the tradeoffs between rule-based systems and AI-assisted recommendation systems.
-
-## Current Status
-
-Initial React + TypeScript + Vite project setup is complete. Next steps include building the core UI screens and implementing the first version of the rule-based Pantry Helper logic.
+npm run dev:server
+How to test the app
+Open the app in the browser
+Complete or skip the profile questionnaire
+Go to Pantry Helper
+Try an input like:
+I have rice, spinach, yogurt, and carrots
+Choose any meal type, digestion level, and stress level
+Click Get ideas
+Save a meal if you want to test the saved meals flow
+Notes
+The backend endpoint is POST /api/recommend
+The app returns AI recommendations when possible
+If AI is unavailable, it falls back to deterministic recommendation rules
